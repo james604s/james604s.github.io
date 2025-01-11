@@ -3,3 +3,4 @@ resources
 .hugo_build.lock
 backup*
 jsconfig.json
+.DS_Store
