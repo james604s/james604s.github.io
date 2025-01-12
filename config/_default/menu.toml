@@ -14,3 +14,19 @@ url = "https://github.com/james604s"
 
 [social.params]
 icon = "brand-github"
+
+[[social]]
+identifier = "linkedin"
+name = "Linkedin"
+url = "https://www.linkedin.com/in/shao-hung-tseng-106455134/"
+
+[social.params]
+icon = "brand-linkedin"
+
+[[social]]
+identifier = "medium"
+name = "Medium"
+url = "https://medium.com/sq-catch-and-note"
+
+[social.params]
+icon = "brand-medium"
