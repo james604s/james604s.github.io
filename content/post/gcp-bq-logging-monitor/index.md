@@ -3,7 +3,7 @@ title: BigQuery Logging & Monitoring
 description: Intro BigQuery Logging & Monitoring
 slug: bq-log-monitor
 date: 2024-11-04 00:00:00+0000
-image:
+image: c2.jpg
 categories:
     - Cloud
     - Data Engineering
