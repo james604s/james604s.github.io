@@ -1,5 +1,5 @@
 ---
-title: Example Category
+title: Cloud
 description:
 image:
 

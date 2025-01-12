@@ -1,5 +1,5 @@
 ---
-title: Example Category
+title: Programming
 description:
 image:
 
