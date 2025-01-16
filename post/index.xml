@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on leoanrd.box.dev</title><link>https://james604s.github.io/post/</link><description>Recent content in Posts on leoanrd.box.dev</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 04 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://james604s.github.io/post/index.xml" rel="self" type="application/rss+xml"/><item><title>BigQuery Logging &amp; Monitoring</title><link>https://james604s.github.io/p/bq-log-monitor/</link><pubDate>Mon, 04 Nov 2024 00:00:00 +0000</pubDate><guid>https://james604s.github.io/p/bq-log-monitor/</guid><description>&lt;img src="https://james604s.github.io/p/bq-log-monitor/c2.jpg" alt="Featured image of post BigQuery Logging &amp; Monitoring" />&lt;p>從我的 Medium 文章轉發: &lt;a class="link" href="https://medium.com/sq-catch-and-note/bigquery-logging-monitor-84892efb3376" target="_blank" rel="noopener"
+>BigQuery Logging &amp;amp; Monitor
+&lt;/a>&lt;/p>
+&lt;p>&lt;img src="https://james604s.github.io/p/bq-log-monitor/cover.jpg"
+width="900"
+height="501"
+srcset="https://james604s.github.io/p/bq-log-monitor/cover_hu13561351024642746856.jpg 480w, https://james604s.github.io/p/bq-log-monitor/cover_hu13683396477958952281.jpg 1024w"
+loading="lazy"
+alt="pic by google cloud"
+class="gallery-image"
+data-flex-grow="179"
+data-flex-basis="431px"
+>&lt;/p>
+&lt;p>Google Cloud Logging、Monitoring 和 Alerting 能確保 BigQuery 工作負載可靠運行、優化性能和控制成本的關鍵工具。&lt;br>
+根據 Google Cloud 文件以下可以讓監控優化更多應用面向。&lt;/p>
+&lt;p>Cloud Monitoring 查看 BigQuery 指標
+INFORMATION_SCHEMA views 查看關於 jobs, datasets, tables, reservations 的 metadata
+Audit Logs 查看各種 Event 像是 (create/delete a table, purchase slots, run jobs)&lt;/p>
+&lt;h2 id="cloud-monitoring">Cloud Monitoring
+&lt;/h2>&lt;p>具備以下的功能:&lt;/p>
+&lt;ul>
+&lt;li>建立儀表板、視覺化圖表&lt;/li>
+&lt;li>異常的查詢的告警 (ex: 使用者查詢量過大)&lt;/li>
+&lt;li>分析歷史效能、分析查詢量&lt;/li>
+&lt;/ul>
+&lt;h3 id="dashboard-基本範例">Dashboard 基本範例
+&lt;/h3>&lt;ul>
+&lt;li>Dashboard Page&lt;/li>
+&lt;li>Table 大小總覽&lt;/li>
+&lt;li>Dataset 大小總覽
+&lt;img src="https://james604s.github.io/p/bq-log-monitor/d1.jpg"
+width="1603"
+height="746"
+srcset="https://james604s.github.io/p/bq-log-monitor/d1_hu6402348873639477839.jpg 480w, https://james604s.github.io/p/bq-log-monitor/d1_hu12819848026221055258.jpg 1024w"
+loading="lazy"
+alt="Cloud Monitoring"
+class="gallery-image"
+data-flex-grow="214"
+data-flex-basis="515px"
+>
+&lt;img src="https://james604s.github.io/p/bq-log-monitor/d2.jpg"
+width="1817"
+height="526"
+srcset="https://james604s.github.io/p/bq-log-monitor/d2_hu16746223849914665616.jpg 480w, https://james604s.github.io/p/bq-log-monitor/d2_hu10612833909282453348.jpg 1024w"
+loading="lazy"
+alt="Cloud Monitoring"
+class="gallery-image"
+data-flex-grow="345"
+data-flex-basis="829px"
+>&lt;/li>
+&lt;/ul>
+&lt;h2 id="cloud-logging">Cloud Logging
+&lt;/h2>&lt;h3 id="cloud-audit-logs">Cloud Audit Logs
+&lt;/h3>&lt;p>&lt;img src="https://james604s.github.io/p/bq-log-monitor/l1.jpg"
+width="1534"
+height="604"
+srcset="https://james604s.github.io/p/bq-log-monitor/l1_hu12175768265477407195.jpg 480w, https://james604s.github.io/p/bq-log-monitor/l1_hu3365729885658899773.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="253"
+data-flex-basis="609px"
+>&lt;/p>
+&lt;ul>
+&lt;li>管理各種事件，像是 Table 的 CRUD。&lt;/li>
+&lt;li>使用者查詢儲存的數據。&lt;/li>
+&lt;li>系統生成的系統事件。&lt;/li>
+&lt;/ul>
+&lt;h3 id="log-viewer">Log Viewer
+&lt;/h3>&lt;p>&lt;img src="https://james604s.github.io/p/bq-log-monitor/l2.jpg"
+width="1023"
+height="486"
+srcset="https://james604s.github.io/p/bq-log-monitor/l2_hu4934486841728211620.jpg 480w, https://james604s.github.io/p/bq-log-monitor/l2_hu10490997779933827873.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="210"
+data-flex-basis="505px"
+>&lt;/p>
+&lt;ul>
+&lt;li>LogEntry Objects
+可以透過撈取 Logging 資訊作為主動告警
+&lt;img src="https://james604s.github.io/p/bq-log-monitor/l3.jpg"
+width="2590"
+height="1030"
+srcset="https://james604s.github.io/p/bq-log-monitor/l3_hu1426017042023593727.jpg 480w, https://james604s.github.io/p/bq-log-monitor/l3_hu17129850187900092315.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="251"
+data-flex-basis="603px"
+>&lt;/li>
+&lt;li>GCP Service Account 使用 BigQuery 查詢量撈取範例&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="n">resource&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;bigquery_resource&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">log_name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;projects/&amp;lt;project_id&amp;gt;/logs/cloudaudit.googleapis.com&lt;/span>&lt;span class="si">%2F&lt;/span>&lt;span class="s2">data_access&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">protoPayload&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">methodName&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;jobservice.jobcompleted&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">protoPayload&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">serviceData&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">jobCompletedEvent&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">job&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">jobStatistics&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">totalProcessedBytes&lt;/span> &lt;span class="o">&amp;gt;&lt;/span> &lt;span class="mi">75000000000&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">protoPayload&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">authenticationInfo&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">principalEmail&lt;/span>&lt;span class="o">=~&lt;/span>&lt;span class="s2">&amp;#34;(iam\.gserviceaccount\.com)$&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;ul>
+&lt;li>GCP Schedule Query 撈取 Error 範例&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-gdscript3" data-lang="gdscript3">&lt;span class="line">&lt;span class="cl">&lt;span class="n">resource&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">type&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;bigquery_resource&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">log_name&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s2">&amp;#34;projects/&amp;lt;project_id&amp;gt;/logs/cloudaudit.googleapis.com&lt;/span>&lt;span class="si">%2F&lt;/span>&lt;span class="s2">data_access&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">protoPayload&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">serviceData&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">jobCompletedEvent&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">job&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">jobName&lt;/span>&lt;span class="o">.&lt;/span>&lt;span class="n">jobId&lt;/span>&lt;span class="o">=~&lt;/span>&lt;span class="s2">&amp;#34;scheduled_query&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="n">severity&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="n">ERROR&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;p>以上撈取出來的可以去做客製化指標並使用 Cloud Alert 告警到 Slack 或是其他通訊軟體。&lt;/p>
+&lt;h3 id="log-export-to-bigquery">Log export to bigquery
+&lt;/h3>&lt;p>可以匯出至 BigQuery 做被動監控報表，並且針對歷史資料做分析。&lt;/p>
+&lt;ul>
+&lt;li>有時候 Log Viewer 上較難以閱讀及使用, 可以透過 SQL 的方式查詢。&lt;/li>
+&lt;li>Audit log 預設保留 30 天，可以將 Log 匯出並針對歷史資料做查詢。&lt;/li>
+&lt;li>Audit log 匯出時記得設定過濾，避免量過大。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Step:&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>BQ 建立資料集&lt;/li>
+&lt;li>Logging 建立接收器&lt;br>
+&lt;img src="https://james604s.github.io/p/bq-log-monitor/l4.jpg"
+width="546"
+height="173"
+srcset="https://james604s.github.io/p/bq-log-monitor/l4_hu3308800121919682804.jpg 480w, https://james604s.github.io/p/bq-log-monitor/l4_hu329675049813431496.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="315"
+data-flex-basis="757px"
+>
+&lt;img src="https://james604s.github.io/p/bq-log-monitor/l5.jpg"
+width="616"
+height="706"
+srcset="https://james604s.github.io/p/bq-log-monitor/l5_hu7365502685794624733.jpg 480w, https://james604s.github.io/p/bq-log-monitor/l5_hu10243496795038921002.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="87"
+data-flex-basis="209px"
+>
+&lt;img src="https://james604s.github.io/p/bq-log-monitor/l6.jpg"
+width="652"
+height="782"
+srcset="https://james604s.github.io/p/bq-log-monitor/l6_hu17133837862240377314.jpg 480w, https://james604s.github.io/p/bq-log-monitor/l6_hu8557921529673689979.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="83"
+data-flex-basis="200px"
+>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>BigQuery Logging Table:&lt;/strong>
+&lt;img src="https://james604s.github.io/p/bq-log-monitor/l7.jpg"
+width="1893"
+height="378"
+srcset="https://james604s.github.io/p/bq-log-monitor/l7_hu11595001269153355419.jpg 480w, https://james604s.github.io/p/bq-log-monitor/l7_hu5190066152860626823.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="500"
+data-flex-basis="1201px"
+>&lt;/p>
+&lt;h2 id="reference">Reference:
+&lt;/h2>&lt;p>&lt;a class="link" href="https://cloudonair.withgoogle.com/events/taiwan-cloud-onboard-architecting-data-warehouse-2022" target="_blank" rel="noopener"
+>Google Cloud OnBoard: 開始建構企業資料倉儲&lt;/a>&lt;br>
+&lt;a class="link" href="https://cloud.google.com/bigquery/docs/information-schema-intro" target="_blank" rel="noopener"
+>INFORMATION SCHEMA Intro&lt;/a>&lt;br>
+&lt;a class="link" href="https://cloud.google.com/bigquery/docs/introduction-audit-workloads" target="_blank" rel="noopener"
+>BigQuery Audit Log&lt;/a>&lt;br>
+&lt;a class="link" href="https://ithelp.ithome.com.tw/m/articles/10308217" target="_blank" rel="noopener"
+>BigQuery 的三種監控方式 – 匯出 Cloud Logging&lt;/a>&lt;/p>
+&lt;p>— — — — — — — — — — — — — — — — — — —&lt;/p>
+&lt;p>這是一個由 Gemini Advanced 產生的 Summary&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Logging (日誌記錄)
+詳細記錄操作歷史： BigQuery 日誌會詳細記錄各種操作，如查詢執行、資料載入、表格建立等。這有助於追蹤作業歷史、調查錯誤原因，並滿足合規審計需求。
+深入了解系統行為： 透過分析日誌，您可以深入了解 BigQuery 的運行狀況，識別潛在問題，並優化查詢性能。
+長期數據存儲： 日誌可以長期存儲，供未來分析和審計使用。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Monitoring (監控)
+實時系統狀態可視化： 監控提供 BigQuery 關鍵指標的實時可視化，如查詢執行時間、槽位使用率、查詢成本等。這有助於及時發現性能瓶頸和異常情況。
+趨勢分析與容量規劃： 透過分析歷史監控數據，您可以了解 BigQuery 使用趨勢，預測未來需求，並相應地規劃容量。
+主動問題識別： 監控可以幫助您在問題影響用戶之前主動識別並解決。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Alerting (警報)
+及時通知異常情況： 當 BigQuery 指標超過預設閾值時，警報會及時通知相關人員，以便立即採取行動。
+成本控制： 警報可以幫助您監控查詢成本，避免意外的高額費用。
+綜上所述，BigQuery Logging、Monitoring 和 Alerting 對於以下方面至關重要：&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>優化性能： 識別性能瓶頸，優化查詢和工作負載。
+控制成本： 監控和管理查詢成本，避免意外費用。
+滿足合規需求： 記錄操作歷史，滿足審計和合規要求。
+透過有效利用這些工具，您可以全面管理 BigQuery 環境，確保其高效、可靠地運行，並充分發揮其強大的數據分析能力。&lt;/p>
+&lt;/li>
+&lt;/ol></description></item><item><title>Hello World</title><link>https://james604s.github.io/p/hello-world/</link><pubDate>Sun, 06 Mar 2022 00:00:00 +0000</pubDate><guid>https://james604s.github.io/p/hello-world/</guid><description>&lt;img src="https://james604s.github.io/p/hello-world/cover.jpg" alt="Featured image of post Hello World" />&lt;p>Welcome to Hugo theme Stack. This is your first post. Edit or delete it, then start writing!&lt;/p>
+&lt;p>For more information about this theme, check the documentation: &lt;a class="link" href="https://stack.jimmycai.com/" target="_blank" rel="noopener"
+>https://stack.jimmycai.com/&lt;/a>&lt;/p>
+&lt;p>Want a site like this? Check out &lt;a class="link" href="https://github.com/CaiJimmy/hugo-theme-stack-starter" target="_blank" rel="noopener"
+>hugo-theme-stack-stater&lt;/a>&lt;/p>
+&lt;blockquote>
+&lt;p>Photo by &lt;a class="link" href="https://unsplash.com/@pawel_czerwinski" target="_blank" rel="noopener"
+>Pawel Czerwinski&lt;/a> on &lt;a class="link" href="https://unsplash.com/" target="_blank" rel="noopener"
+>Unsplash&lt;/a>&lt;/p>
+&lt;/blockquote></description></item><item><title>Markdown Syntax Guide</title><link>https://james604s.github.io/p/markdown-syntax-guide/</link><pubDate>Thu, 07 Sep 2023 00:00:00 +0000</pubDate><guid>https://james604s.github.io/p/markdown-syntax-guide/</guid><description>&lt;p>This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p>
+&lt;h2 id="headings">Headings
+&lt;/h2>&lt;p>The following HTML &lt;code>&amp;lt;h1&amp;gt;&lt;/code>—&lt;code>&amp;lt;h6&amp;gt;&lt;/code> elements represent six levels of section headings. &lt;code>&amp;lt;h1&amp;gt;&lt;/code> is the highest section level while &lt;code>&amp;lt;h6&amp;gt;&lt;/code> is the lowest.&lt;/p>
+&lt;h1 id="h1">H1
+&lt;/h1>&lt;h2 id="h2">H2
+&lt;/h2>&lt;h3 id="h3">H3
+&lt;/h3>&lt;h4 id="h4">H4
+&lt;/h4>&lt;h5 id="h5">H5
+&lt;/h5>&lt;h6 id="h6">H6
+&lt;/h6>&lt;h2 id="paragraph">Paragraph
+&lt;/h2>&lt;p>Xerum, quo qui aut unt expliquam qui dolut labo. Aque venitatiusda cum, voluptionse latur sitiae dolessi aut parist aut dollo enim qui voluptate ma dolestendit peritin re plis aut quas inctum laceat est volestemque commosa as cus endigna tectur, offic to cor sequas etum rerum idem sintibus eiur? Quianimin porecus evelectur, cum que nis nust voloribus ratem aut omnimi, sitatur? Quiatem. Nam, omnis sum am facea corem alique molestrunt et eos evelece arcillit ut aut eos eos nus, sin conecerem erum fuga. Ri oditatquam, ad quibus unda veliamenimin cusam et facea ipsamus es exerum sitate dolores editium rerore eost, temped molorro ratiae volorro te reribus dolorer sperchicium faceata tiustia prat.&lt;/p>
+&lt;p>Itatur? Quiatae cullecum rem ent aut odis in re eossequodi nonsequ idebis ne sapicia is sinveli squiatum, core et que aut hariosam ex eat.&lt;/p>
+&lt;h2 id="blockquotes">Blockquotes
+&lt;/h2>&lt;p>The blockquote element represents content that is quoted from another source, optionally with a citation which must be within a &lt;code>footer&lt;/code> or &lt;code>cite&lt;/code> element, and optionally with in-line changes such as annotations and abbreviations.&lt;/p>
+&lt;h3 id="blockquote-without-attribution">Blockquote without attribution
+&lt;/h3>&lt;blockquote>
+&lt;p>Tiam, ad mint andaepu dandae nostion secatur sequo quae.
+&lt;strong>Note&lt;/strong> that you can use &lt;em>Markdown syntax&lt;/em> within a blockquote.&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="blockquote-with-attribution">Blockquote with attribution
+&lt;/h3>&lt;blockquote>
+&lt;p>Don&amp;rsquo;t communicate by sharing memory, share memory by communicating.&lt;br>
+— &lt;cite>Rob Pike&lt;sup id="fnref:1">&lt;a href="#fn:1" class="footnote-ref" role="doc-noteref">1&lt;/a>&lt;/sup>&lt;/cite>&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="tables">Tables
+&lt;/h2>&lt;p>Tables aren&amp;rsquo;t part of the core Markdown spec, but Hugo supports supports them out-of-the-box.&lt;/p>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Name&lt;/th>
+&lt;th>Age&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Bob&lt;/td>
+&lt;td>27&lt;/td>
+&lt;/tr>
+&lt;tr>
+&lt;td>Alice&lt;/td>
+&lt;td>23&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h3 id="inline-markdown-within-tables">Inline Markdown within tables
+&lt;/h3>&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>Italics&lt;/th>
+&lt;th>Bold&lt;/th>
+&lt;th>Code&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>&lt;em>italics&lt;/em>&lt;/td>
+&lt;td>&lt;strong>bold&lt;/strong>&lt;/td>
+&lt;td>&lt;code>code&lt;/code>&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;table>
+&lt;thead>
+&lt;tr>
+&lt;th>A&lt;/th>
+&lt;th>B&lt;/th>
+&lt;th>C&lt;/th>
+&lt;th>D&lt;/th>
+&lt;th>E&lt;/th>
+&lt;th>F&lt;/th>
+&lt;/tr>
+&lt;/thead>
+&lt;tbody>
+&lt;tr>
+&lt;td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.&lt;/td>
+&lt;td>Phasellus ultricies, sapien non euismod aliquam, dui ligula tincidunt odio, at accumsan nulla sapien eget ex.&lt;/td>
+&lt;td>Proin eleifend dictum ipsum, non euismod ipsum pulvinar et. Vivamus sollicitudin, quam in pulvinar aliquam, metus elit pretium purus&lt;/td>
+&lt;td>Proin sit amet velit nec enim imperdiet vehicula.&lt;/td>
+&lt;td>Ut bibendum vestibulum quam, eu egestas turpis gravida nec&lt;/td>
+&lt;td>Sed scelerisque nec turpis vel viverra. Vivamus vitae pretium sapien&lt;/td>
+&lt;/tr>
+&lt;/tbody>
+&lt;/table>
+&lt;h2 id="code-blocks">Code Blocks
+&lt;/h2>&lt;h3 id="code-block-with-backticks">Code block with backticks
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt"> 1
+&lt;/span>&lt;span class="lnt"> 2
+&lt;/span>&lt;span class="lnt"> 3
+&lt;/span>&lt;span class="lnt"> 4
+&lt;/span>&lt;span class="lnt"> 5
+&lt;/span>&lt;span class="lnt"> 6
+&lt;/span>&lt;span class="lnt"> 7
+&lt;/span>&lt;span class="lnt"> 8
+&lt;/span>&lt;span class="lnt"> 9
+&lt;/span>&lt;span class="lnt">10
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">&lt;span class="cp">&amp;lt;!doctype html&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">html&lt;/span> &lt;span class="na">lang&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;en&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">meta&lt;/span> &lt;span class="na">charset&lt;/span>&lt;span class="o">=&lt;/span>&lt;span class="s">&amp;#34;utf-8&amp;#34;&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">title&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>Example HTML5 Document&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">title&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">head&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">body&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> &lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>Test&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">body&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">html&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="code-block-indented-with-four-spaces">Code block indented with four spaces
+&lt;/h3>&lt;pre>&lt;code>&amp;lt;!doctype html&amp;gt;
+&amp;lt;html lang=&amp;quot;en&amp;quot;&amp;gt;
+&amp;lt;head&amp;gt;
+&amp;lt;meta charset=&amp;quot;utf-8&amp;quot;&amp;gt;
+&amp;lt;title&amp;gt;Example HTML5 Document&amp;lt;/title&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+&amp;lt;p&amp;gt;Test&amp;lt;/p&amp;gt;
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code>&lt;/pre>
+&lt;h3 id="diff-code-block">Diff code block
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;span class="lnt">4
+&lt;/span>&lt;span class="lnt">5
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-diff" data-lang="diff">&lt;span class="line">&lt;span class="cl">[dependencies.bevy]
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">git = &amp;#34;https://github.com/bevyengine/bevy&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">rev = &amp;#34;11f52b8c72fc3a568e8bb4a4cd1f3eb025ac2e13&amp;#34;
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="gd">- features = [&amp;#34;dynamic&amp;#34;]
+&lt;/span>&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">&lt;span class="gd">&lt;/span>&lt;span class="gi">+ features = [&amp;#34;jpeg&amp;#34;, &amp;#34;dynamic&amp;#34;]
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h3 id="one-line-code-block">One line code block
+&lt;/h3>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-html" data-lang="html">&lt;span class="line">&lt;span class="cl">&lt;span class="p">&amp;lt;&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>A paragraph&lt;span class="p">&amp;lt;/&lt;/span>&lt;span class="nt">p&lt;/span>&lt;span class="p">&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="list-types">List Types
+&lt;/h2>&lt;h3 id="ordered-list">Ordered List
+&lt;/h3>&lt;ol>
+&lt;li>First item&lt;/li>
+&lt;li>Second item&lt;/li>
+&lt;li>Third item&lt;/li>
+&lt;/ol>
+&lt;h3 id="unordered-list">Unordered List
+&lt;/h3>&lt;ul>
+&lt;li>List item&lt;/li>
+&lt;li>Another item&lt;/li>
+&lt;li>And another item&lt;/li>
+&lt;/ul>
+&lt;h3 id="nested-list">Nested list
+&lt;/h3>&lt;ul>
+&lt;li>Fruit
+&lt;ul>
+&lt;li>Apple&lt;/li>
+&lt;li>Orange&lt;/li>
+&lt;li>Banana&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Dairy
+&lt;ul>
+&lt;li>Milk&lt;/li>
+&lt;li>Cheese&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="other-elements--abbr-sub-sup-kbd-mark">Other Elements — abbr, sub, sup, kbd, mark
+&lt;/h2>&lt;p>&lt;abbr title="Graphics Interchange Format">GIF&lt;/abbr> is a bitmap image format.&lt;/p>
+&lt;p>H&lt;sub>2&lt;/sub>O&lt;/p>
+&lt;p>X&lt;sup>n&lt;/sup> + Y&lt;sup>n&lt;/sup> = Z&lt;sup>n&lt;/sup>&lt;/p>
+&lt;p>Press &lt;kbd>CTRL&lt;/kbd> + &lt;kbd>ALT&lt;/kbd> + &lt;kbd>Delete&lt;/kbd> to end the session.&lt;/p>
+&lt;p>Most &lt;mark>salamanders&lt;/mark> are nocturnal, and hunt for insects, worms, and other small creatures.&lt;/p>
+&lt;div class="footnotes" role="doc-endnotes">
+&lt;hr>
+&lt;ol>
+&lt;li id="fn:1">
+&lt;p>The above quote is excerpted from Rob Pike&amp;rsquo;s &lt;a class="link" href="https://www.youtube.com/watch?v=PAAkCSZUG1c" target="_blank" rel="noopener"
+>talk&lt;/a> during Gopherfest, November 18, 2015.&amp;#160;&lt;a href="#fnref:1" class="footnote-backref" role="doc-backlink">&amp;#x21a9;&amp;#xfe0e;&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/div></description></item><item><title>Image gallery</title><link>https://james604s.github.io/p/image-gallery/</link><pubDate>Sat, 26 Aug 2023 00:00:00 +0000</pubDate><guid>https://james604s.github.io/p/image-gallery/</guid><description>&lt;img src="https://james604s.github.io/p/image-gallery/2.jpg" alt="Featured image of post Image gallery" />&lt;p>Hugo theme Stack supports the creation of interactive image galleries using Markdown. It&amp;rsquo;s powered by &lt;a class="link" href="https://photoswipe.com/" target="_blank" rel="noopener"
+>PhotoSwipe&lt;/a> and its syntax was inspired by &lt;a class="link" href="https://typlog.com/" target="_blank" rel="noopener"
+>Typlog&lt;/a>.&lt;/p>
+&lt;p>To use this feature, the image must be in the same directory as the Markdown file, as it uses Hugo&amp;rsquo;s page bundle feature to read the dimensions of the image. &lt;strong>External images are not supported.&lt;/strong>&lt;/p>
+&lt;h2 id="syntax">Syntax
+&lt;/h2>&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">![&lt;span class="nt">Image 1&lt;/span>](&lt;span class="na">1.jpg&lt;/span>) ![&lt;span class="nt">Image 2&lt;/span>](&lt;span class="na">2.jpg&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="result">Result
+&lt;/h2>&lt;p>&lt;img src="https://james604s.github.io/p/image-gallery/1.jpg"
+width="2000"
+height="1400"
+srcset="https://james604s.github.io/p/image-gallery/1_hu4574578169203714971.jpg 480w, https://james604s.github.io/p/image-gallery/1_hu9042511268598201431.jpg 1024w"
+loading="lazy"
+alt="Image 1"
+class="gallery-image"
+data-flex-grow="142"
+data-flex-basis="342px"
+> &lt;img src="https://james604s.github.io/p/image-gallery/2.jpg"
+width="1500"
+height="2250"
+srcset="https://james604s.github.io/p/image-gallery/2_hu10699635480308914167.jpg 480w, https://james604s.github.io/p/image-gallery/2_hu1741040415904021193.jpg 1024w"
+loading="lazy"
+alt="Image 2"
+class="gallery-image"
+data-flex-grow="66"
+data-flex-basis="160px"
+>&lt;/p>
+&lt;blockquote>
+&lt;p>Photo by &lt;a class="link" href="https://unsplash.com/@mymind" target="_blank" rel="noopener"
+>mymind&lt;/a> and &lt;a class="link" href="https://unsplash.com/@lukechesser" target="_blank" rel="noopener"
+>Luke Chesser&lt;/a> on &lt;a class="link" href="https://unsplash.com/" target="_blank" rel="noopener"
+>Unsplash&lt;/a>&lt;/p>
+&lt;/blockquote></description></item><item><title>Shortcodes</title><link>https://james604s.github.io/p/shortcodes/</link><pubDate>Fri, 25 Aug 2023 00:00:00 +0000</pubDate><guid>https://james604s.github.io/p/shortcodes/</guid><description>&lt;img src="https://james604s.github.io/p/shortcodes/cover.jpg" alt="Featured image of post Shortcodes" />&lt;p>For more details, check out the &lt;a class="link" href="https://stack.jimmycai.com/writing/shortcodes" target="_blank" rel="noopener"
+>documentation&lt;/a>.&lt;/p>
+&lt;h2 id="bilibili-video">Bilibili video
+&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;iframe src="https://player.bilibili.com/player.html?as_wide=1&amp;amp;high_quality=1&amp;amp;page=1&amp;bvid=BV1d4411N7zD"
+scrolling="no"
+frameborder="no"
+framespacing="0"
+allowfullscreen="true"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="tencent-video">Tencent video
+&lt;/h2>
+&lt;div class="video-wrapper">
+&lt;iframe src="https://v.qq.com/txp/iframe/player.html?vid=g0014r3khdw&amp;auto=0"
+scrolling="no"
+frameborder="no"
+framespacing="0"
+allowfullscreen="true"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="youtube-video">YouTube video
+&lt;/h2>&lt;div class="video-wrapper">
+&lt;iframe loading="lazy"
+src="https://www.youtube.com/embed/0qwALOOvUik"
+allowfullscreen
+title="YouTube Video"
+>
+&lt;/iframe>
+&lt;/div>
+&lt;h2 id="generic-video-file">Generic video file
+&lt;/h2>&lt;div class="video-wrapper">
+&lt;video
+controls
+src="https://www.w3schools.com/tags/movie.mp4"
+>
+&lt;p>
+Your browser doesn't support HTML5 video. Here is a
+&lt;a href="https://www.w3schools.com/tags/movie.mp4">link to the video&lt;/a> instead.
+&lt;/p>
+&lt;/video>
+&lt;/div>
+&lt;h2 id="gist">Gist
+&lt;/h2>&lt;script src="https://gist.github.com/CaiJimmy/e2751a943de10b2a5b3a8a6c2120cb86.js">&lt;/script>
+&lt;h2 id="gitlab">GitLab
+&lt;/h2>&lt;script
+type="application/javascript"
+src="https://gitlab.com/-/snippets/2589724.js"
+>&lt;/script>
+&lt;h2 id="quote">Quote
+&lt;/h2>&lt;blockquote>
+&lt;p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&lt;/p>&lt;span class="cite">&lt;span>― &lt;/span>&lt;span>A famous person, &lt;/span>&lt;a href="https://en.wikipedia.org/wiki/Book">&lt;cite>The book they wrote&lt;/cite>&lt;/a>&lt;/span>&lt;/blockquote>
+&lt;hr>
+&lt;blockquote>
+&lt;p>Photo by &lt;a class="link" href="https://unsplash.com/@codioful" target="_blank" rel="noopener"
+>Codioful&lt;/a> on &lt;a class="link" href="https://unsplash.com/photos/WDSN62Qdxuk" target="_blank" rel="noopener"
+>Unsplash&lt;/a>&lt;/p>
+&lt;/blockquote></description></item><item><title>Math Typesetting</title><link>https://james604s.github.io/p/math-typesetting/</link><pubDate>Thu, 24 Aug 2023 00:00:00 +0000</pubDate><guid>https://james604s.github.io/p/math-typesetting/</guid><description>&lt;p>Stack has built-in support for math typesetting using &lt;a class="link" href="https://katex.org/" target="_blank" rel="noopener"
+>KaTeX&lt;/a>.&lt;/p>
+&lt;p>&lt;strong>It&amp;rsquo;s not enabled by default side-wide,&lt;/strong> but you can enable it for individual posts by adding &lt;code>math: true&lt;/code> to the front matter. Or you can enable it side-wide by adding &lt;code>math = true&lt;/code> to the &lt;code>params.article&lt;/code> section in &lt;code>config.toml&lt;/code>.&lt;/p>
+&lt;h2 id="inline-math">Inline math
+&lt;/h2>&lt;p>This is an inline mathematical expression: $\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$&lt;/p>
+&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">$\varphi = \dfrac{1+\sqrt5}{2}= 1.6180339887…$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>&lt;h2 id="block-math">Block math
+&lt;/h2>$$
+\varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+$$&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> \varphi = 1+\frac{1} {1+\frac{1} {1+\frac{1} {1+\cdots} } }
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div>$$
+f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+$$&lt;div class="highlight">&lt;div class="chroma">
+&lt;table class="lntable">&lt;tr>&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code>&lt;span class="lnt">1
+&lt;/span>&lt;span class="lnt">2
+&lt;/span>&lt;span class="lnt">3
+&lt;/span>&lt;/code>&lt;/pre>&lt;/td>
+&lt;td class="lntd">
+&lt;pre tabindex="0" class="chroma">&lt;code class="language-markdown" data-lang="markdown">&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl"> f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi
+&lt;/span>&lt;/span>&lt;span class="line">&lt;span class="cl">$$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/td>&lt;/tr>&lt;/table>
+&lt;/div>
+&lt;/div></description></item></channel></rss>
