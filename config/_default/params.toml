@@ -6,7 +6,7 @@ favicon = "/favicon.png"
 
 [footer]
 since = 2024
-customText = "When the ETL jobs fail, let it go!!! Don't be obsessed"
+customText = "leonardtsengbc@gmail.com | When the ETL jobs fail, let it go!!! Don't be obsessed"
 
 [dateFormat]
 published = "Jan 02, 2006"
