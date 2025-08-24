@@ -148,3 +148,6 @@ clientSecret = ""
 [comments.cusdis]
 host = ""
 id = ""
+
+[params]
+ga_measurement_id = "G-CJF06ERQ8D"
