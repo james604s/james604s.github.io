@@ -5,8 +5,8 @@ rssFullContent = true
 favicon = "/favicon.png"
 
 [footer]
-since = 2020
-customText = "test"
+since = 2024
+customText = "leonardtsengbc@gmail.com"
 
 [dateFormat]
 published = "Jan 02, 2006"
