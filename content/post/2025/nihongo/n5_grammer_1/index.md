@@ -1,6 +1,6 @@
 ---
 title: 日文學習 N5 文法一點點 - 1
-description: 日文筆記，從零開始學日文。
+description: 日文筆記，從零開始學日文。 1.ぜひ〜 2.〜ぐらい 
 slug: n5_ninhongo_grammer_1
 date: 2025-08-24 00:00:00+0000
 image: 
