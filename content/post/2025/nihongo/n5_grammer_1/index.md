@@ -8,6 +8,8 @@ categories:
     - Language
 tags:
     - Nihongo
+    - 日文
+    - N5
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 # 日文學習 N5 文法一點點 - 1
