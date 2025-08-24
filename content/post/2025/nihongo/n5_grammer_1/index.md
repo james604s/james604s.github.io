@@ -1,6 +1,6 @@
 ---
-title: 日文學習 N5 文法一點點 - 1
-description: 日文筆記，從零開始學日文。 1.ぜひ〜 2.〜ぐらい 
+title: N5 日文文法十分鐘 - 1
+description: N5 日文基礎文法，從零開始學日文。 1.ぜひ〜 2.〜ぐらい 
 slug: n5_ninhongo_grammer_1
 date: 2025-08-24 00:00:00+0000
 image: 
@@ -12,7 +12,7 @@ tags:
     - N5
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
-# 日文學習 N5 文法一點點 - 1
+# N5 日文文法十分鐘 - 1
 ## 文法
 
 | 文法 | 結構 | 中文意思 | 例句(日文) | 例句(中文) | 注意事項 |
