@@ -30,3 +30,11 @@ url = "https://medium.com/sq-catch-and-note"
 
 [social.params]
 icon = "brand-medium"
+
+[[social]]
+identifier = "email"
+name = "Email"
+url = "leonardtsengbc@gmail.com"
+
+[social.params]
+icon = "brand-email"
