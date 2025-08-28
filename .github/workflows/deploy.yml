@@ -42,7 +42,6 @@ jobs:
             - name: Build
               run: | 
                 hugo --minify --gc
-                echo 'noleonardblog.com' > public/CNAME
 
             - name: Deploy 🚀
               uses: JamesIves/github-pages-deploy-action@v4
@@ -51,3 +50,4 @@ jobs:
                   folder: public
                   clean: true
                   single-commit: true
+                  cname: noleonardblog.com
