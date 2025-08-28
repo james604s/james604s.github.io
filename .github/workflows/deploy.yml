@@ -50,4 +50,3 @@ jobs:
                   folder: public
                   clean: true
                   single-commit: true
-                  cname: noleonardblog.com
