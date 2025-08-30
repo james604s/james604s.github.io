@@ -95,10 +95,11 @@ Spark 支援多種執行模式，決定 Driver 與 Executor 的運行位置。
 
 ![local=3](chart2.png)
 
-> **Hint**  
+```text
 - 1 Driver + 1 Executor JVM  
 - Executor 內 3 Threads → 同時處理 3 Tasks  
 - 若 12 Partitions → Spark 需分 4 輪執行
+```
 
 ---
 
