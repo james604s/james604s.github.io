@@ -1,10 +1,10 @@
 ---
-title: Programming
+title: SQL
 description:
 image:
 
 # Badge style
 style:
-    background: "#2a9d8f"
+    background: "#0000C6"
     color: "#fff"
 ---

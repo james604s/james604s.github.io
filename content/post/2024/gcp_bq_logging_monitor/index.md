@@ -9,7 +9,9 @@ categories:
     - Data Engineering
 tags:
     - BigQuery
-    - GCP Logging & Monitor
+    - Google Cloud
+    - Logging
+    - Monitoring
 weight: 1       # You can add weight to some posts to override the default sorting (date descending)
 ---
 從我的 Medium 文章轉發: [BigQuery Logging & Monitor
