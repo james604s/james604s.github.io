@@ -6,6 +6,7 @@ date: 2025-08-24 00:00:00+0000
 image: 
 categories:
     - Language
+    - Nihongo
 tags:
     - Nihongo
     - 日文
