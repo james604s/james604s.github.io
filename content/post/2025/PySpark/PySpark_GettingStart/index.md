@@ -2,7 +2,7 @@
 title: PySpark 學習筆記 - Getting Start
 description: Getting Start 快速瀏覽一遍 PySpark 開發用法
 slug: pyspark_getting_start
-date: 2025-08-28 00:00:00+0000
+date: 2025-08-23 00:00:00+0000
 image: 
 categories:
     - PySpark

@@ -2,7 +2,7 @@
 title: N5 日文文法十分鐘 - 1
 description: N5 日文基礎文法，從零開始學日文。 1.ぜひ〜 2.〜ぐらい 
 slug: n5_ninhongo_grammer_1
-date: 2025-08-24 00:00:00+0000
+date: 2025-08-23 00:00:00+0000
 image: 
 categories:
     - Language
