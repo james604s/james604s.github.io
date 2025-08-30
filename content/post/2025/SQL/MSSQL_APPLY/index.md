@@ -1,6 +1,6 @@
 ---
 title: SQL SERVER `APPLY` 查詢
-description: 工作上近期使用到 SQL SERVER, APPLY 很適合在當期無資料時, 撈取最新一筆資料做比對時使用時蠻好用的。
+description: 工作上近期使用到 SQL SERVER, APPLY 很適合在當期無資料時, 撈取最新一筆資料做比對使用。
 slug: sql_server_apply_1
 date: 2025-09-06 00:00:00+0000
 image: 
