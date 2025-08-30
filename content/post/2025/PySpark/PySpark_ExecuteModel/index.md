@@ -70,7 +70,7 @@ Spark 採用 **Driver + Executor** 架構，透過 **Cluster Manager** 管理資
 
 ### Spark Job 提交流程
 
-![Char1](chart1.png)
+![Job Submit Flow](chart1.png)
 
 ---
 
@@ -93,7 +93,7 @@ Spark 支援多種執行模式，決定 Driver 與 Executor 的運行位置。
 
 ### local[3] 運行架構圖
 
-![Char2](chart2.png)
+![local=3](chart2.png)
 
 > **Hint**  
 - 1 Driver + 1 Executor JVM  
@@ -104,13 +104,13 @@ Spark 支援多種執行模式，決定 Driver 與 Executor 的運行位置。
 
 ## YARN 模式架構圖
 
-![Char3](chart3.png)
+![YARN](chart3.png)
 
 ---
 
 ## Kubernetes 模式架構圖
 
-![Char4](chart4.png)
+![Kubernetes](chart4.png)
 
 ---
 
