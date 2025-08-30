@@ -1,10 +1,10 @@
 ---
-title: Language
+title: Ninhongo
 description:
 image:
 
 # Badge style
 style:
-    background: "#4F9D9D"
+    background: "#0066CC"
     color: "#fff"
 ---
