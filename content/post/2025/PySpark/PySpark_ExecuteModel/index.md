@@ -47,7 +47,7 @@ Spark 提供兩大類型的執行方式：**互動式開發**與**提交批次�
 
 | 工具 | 功能 | 適用場景 |
 |------|------|-----------|
-| **spark-submit** | 最常用方式，提交 Application 至叢集 | 生產 ETL、批次處理 |
+| **spark-submit** | 最常用方式，提交 Application 至叢集 | Prod ETL、批次處理 |
 | **Databricks** | 雲端 Notebook 平台，內建 Spark 運行環境 | 雲端數據處理 |
 | **REST API / Web UI** | 提交、監控、管理 Spark Job | 自動化調度 |
 
@@ -136,7 +136,7 @@ Max Concurrent Tasks = Executors × Executor Cores
 2. **Executors × Cores** ≈ Partition 數 / 2~3  
 3. **Shuffle Partition** = Executors × Cores × 2  
 4. 避免單 Executor 過多 Threads → 降低 GC 負擔  
-5. 生產建議開啟動態資源配置：  
+5. Production 建議開啟動態資源配置：  
 ```bash
 --conf spark.dynamicAllocation.enabled=true
 ```
@@ -146,7 +146,7 @@ Max Concurrent Tasks = Executors × Executor Cores
 ## 總結
 
 - **local[3]** → 1 Executor JVM + 3 Threads → 適合開發與模擬並行  
-- 生產環境 → 建議使用 **YARN / K8s / Standalone**  
+- Production → 建議使用 **YARN / K8s / Standalone**  
 - Spark 效能調優核心三步：
     1. 決定 Partition 數量
     2. 設定 Executors × Cores
