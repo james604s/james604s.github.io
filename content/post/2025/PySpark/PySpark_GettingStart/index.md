@@ -208,3 +208,17 @@ result.show()
 
 ## Reference
 [PySpark - Apache Spark Programming in Python for beginners](https://www.udemy.com/course/apache-spark-programming-in-python-for-beginners/)
+
+---
+
+最近打拳被揍到腦袋有點不靈光 🤕  
+寫文章需要咖啡來補血 ☕  
+如果你喜歡這篇內容，歡迎請我喝杯咖啡！  
+
+Lately I’ve been punched a bit too much in boxing 🥊  
+My brain runs on coffee patches ☕  
+If you enjoyed this post, fuel me with a cup!  
+
+👉 [Buy Me a Coffee](https://buymeacoffee.com/james604s)
+
+---

@@ -173,3 +173,17 @@ ON Orders(customer_id, order_date DESC);
 
 ## Reference
 [理解 SQL Server 的 CROSS APPLY 和 OUTER APPLY 査詢](https://www.navicat.com/cht/company/aboutus/blog/1824-understanding-sql-server-cross-apply-and-outer-apply-queries-part-1.html)
+
+---
+
+最近打拳被揍到腦袋有點不靈光 🤕  
+寫文章需要咖啡來補血 ☕  
+如果你喜歡這篇內容，歡迎請我喝杯咖啡！  
+
+Lately I’ve been punched a bit too much in boxing 🥊  
+My brain runs on coffee patches ☕  
+If you enjoyed this post, fuel me with a cup!  
+
+👉 [Buy Me a Coffee](https://buymeacoffee.com/james604s)
+
+---
