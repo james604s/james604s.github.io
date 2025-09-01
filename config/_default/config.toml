@@ -1,5 +1,5 @@
 # Change baseurl before deploy
-baseurl = "https://james604s.github.io/"
+baseurl = "https://www.noleonardblog.com"
 languageCode = "en-us"
 title = "KageNoLeonard"
 googleAnalytics = "G-CJF06ERQ8D" 
