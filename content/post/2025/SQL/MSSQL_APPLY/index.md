@@ -73,8 +73,8 @@ INSERT INTO Orders(order_id, customer_id, order_date, amount) VALUES
 ## `APPLY` 原理
 
 在 **SQL Server** 中，`APPLY` 是一種 **橫向關聯** (lateral join) 的機制。
-- `CROSS APPLY` = 像 INNER JOIN
-- `OUTER APPLY` = 像 LEFT JOIN
+- `CROSS APPLY` 像 INNER JOIN
+- `OUTER APPLY` 像 LEFT JOIN
 
 > **PostgreSQL 對應**：`LATERAL`
 
@@ -161,7 +161,7 @@ ORDER BY c.customer_id, d.amount DESC NULLS LAST;
 
 ---
 
-## 7. 效能注意事項
+## 效能注意事項
 
 - `APPLY` 會針對左表每列執行一次子查詢
 - 建議建立複合索引：
