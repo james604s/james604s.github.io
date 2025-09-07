@@ -1,0 +1,20 @@
+
+DataFrameWriter API
+
+DataFrame.write
+        .format("parquet")
+        .mode(saveMode) # append, overwrite, errorIfExists, ignore
+        .option("path", "/data/flights/")
+        .save()
+
+Spark File Layout
+1. Number of files and file size
+2. Partitions and Buckets
+3. Sorted daa
+
+Default: 每個 Data Frame 寫入 File System 時, 每個 partition 都會獲得一個 Output file
+Repartition: 
+- .repartition(n) # 重新分區並控制 output file 的數量 (隨機、盲目的分區)
+- .partitionBy # 根據索引鍵進行重新分割數據 -> 分區修剪提高 Spark SQL 性能
+- .bucketBy(n, col1, col2) 只在 Spark 管理的資料表上可用
+- other -> sortBy(), maxRecordsPerFile
