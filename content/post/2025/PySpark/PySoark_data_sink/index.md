@@ -209,10 +209,4 @@ spark.stop()
 
 ---
 
-拳館要搬家了，換到新地點，有擂台好興奮耶！
-
-The gym is moving to a new location, and I'm so excited because there's going to be a boxing ring! 🥊
-
-👉 [Buy Me a Coffee](https://buymeacoffee.com/james604s)
-
 ---
