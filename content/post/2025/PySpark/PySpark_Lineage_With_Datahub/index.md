@@ -22,8 +22,6 @@ weight: 1       # You can add weight to some posts to override the default sorti
 
 幸運的是，像 PySpark 這樣的強大處理引擎，搭配 Datahub 這樣的現代資料目錄 (Data Catalog)，可以幫助我們自動化地解開這個謎團。
 
-這篇文章將是一份從零到一的終極實戰手冊。我們將從最核心的**技術概念**講起，提供**兩種主流路徑的完整程式碼範例**，並探討如何將其部署到**生產級的 Apache Airflow 工作流**中，帶你徹底掌握 PySpark 資料血緣的奧秘。
-
 *在 Datahub 中呈現的清晰資料血緣圖*
 
 ## **Spark & Lineage**
