@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Monitoring on KageNoLeonard</title><link>https://www.noleonardblog.com/tags/monitoring/</link><description>Recent content in Monitoring on KageNoLeonard</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 04 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://www.noleonardblog.com/tags/monitoring/index.xml" rel="self" type="application/rss+xml"/><item><title>BigQuery Logging &amp; Monitoring</title><link>https://www.noleonardblog.com/p/bq-log-monitor/</link><pubDate>Mon, 04 Nov 2024 00:00:00 +0000</pubDate><guid>https://www.noleonardblog.com/p/bq-log-monitor/</guid><description>&lt;img src="https://www.noleonardblog.com/p/bq-log-monitor/c2.jpg" alt="Featured image of post BigQuery Logging &amp; Monitoring" /&gt;&lt;p&gt;從我的 Medium 文章轉發: &lt;a class="link" href="https://medium.com/sq-catch-and-note/bigquery-logging-monitor-84892efb3376" target="_blank" rel="noopener"
+&gt;BigQuery Logging &amp;amp; Monitor
+&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://www.noleonardblog.com/p/bq-log-monitor/cover.jpg"
+width="900"
+height="501"
+srcset="https://www.noleonardblog.com/p/bq-log-monitor/cover_hu_9310ce9b00605d6a.jpg 480w, https://www.noleonardblog.com/p/bq-log-monitor/cover_hu_cfcef3fe5d92352f.jpg 1024w"
+loading="lazy"
+alt="pic by google cloud"
+class="gallery-image"
+data-flex-grow="179"
+data-flex-basis="431px"
+&gt;&lt;/p&gt;
+&lt;p&gt;Google Cloud Logging、Monitoring 和 Alerting 能確保 BigQuery 工作負載可靠運行、優化性能和控制成本的關鍵工具。&lt;br&gt;
+根據 Google Cloud 文件以下可以讓監控優化更多應用面向。&lt;/p&gt;
+&lt;p&gt;Cloud Monitoring 查看 BigQuery 指標
+INFORMATION_SCHEMA views 查看關於 jobs, datasets, tables, reservations 的 metadata
+Audit Logs 查看各種 Event 像是 (create/delete a table, purchase slots, run jobs)&lt;/p&gt;
+&lt;h2 id="cloud-monitoring"&gt;Cloud Monitoring
+&lt;/h2&gt;&lt;p&gt;具備以下的功能:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;建立儀表板、視覺化圖表&lt;/li&gt;
+&lt;li&gt;異常的查詢的告警 (ex: 使用者查詢量過大)&lt;/li&gt;
+&lt;li&gt;分析歷史效能、分析查詢量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="dashboard-基本範例"&gt;Dashboard 基本範例
+&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Dashboard Page&lt;/li&gt;
+&lt;li&gt;Table 大小總覽&lt;/li&gt;
+&lt;li&gt;Dataset 大小總覽
+&lt;img src="https://www.noleonardblog.com/p/bq-log-monitor/d1.jpg"
+width="1603"
+height="746"
+srcset="https://www.noleonardblog.com/p/bq-log-monitor/d1_hu_ba901a3d6a987e63.jpg 480w, https://www.noleonardblog.com/p/bq-log-monitor/d1_hu_b4402c71652a5b51.jpg 1024w"
+loading="lazy"
+alt="Cloud Monitoring"
+class="gallery-image"
+data-flex-grow="214"
+data-flex-basis="515px"
+&gt;
+&lt;img src="https://www.noleonardblog.com/p/bq-log-monitor/d2.jpg"
+width="1817"
+height="526"
+srcset="https://www.noleonardblog.com/p/bq-log-monitor/d2_hu_cc1509d09d651ba4.jpg 480w, https://www.noleonardblog.com/p/bq-log-monitor/d2_hu_c1067f54df23b05.jpg 1024w"
+loading="lazy"
+alt="Cloud Monitoring"
+class="gallery-image"
+data-flex-grow="345"
+data-flex-basis="829px"
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="cloud-logging"&gt;Cloud Logging
+&lt;/h2&gt;&lt;h3 id="cloud-audit-logs"&gt;Cloud Audit Logs
+&lt;/h3&gt;&lt;p&gt;&lt;img src="https://www.noleonardblog.com/p/bq-log-monitor/l1.jpg"
+width="1534"
+height="604"
+srcset="https://www.noleonardblog.com/p/bq-log-monitor/l1_hu_265fc6e68ce9888d.jpg 480w, https://www.noleonardblog.com/p/bq-log-monitor/l1_hu_798e928bfd324ad.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="253"
+data-flex-basis="609px"
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;管理各種事件，像是 Table 的 CRUD。&lt;/li&gt;
+&lt;li&gt;使用者查詢儲存的數據。&lt;/li&gt;
+&lt;li&gt;系統生成的系統事件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="log-viewer"&gt;Log Viewer
+&lt;/h3&gt;&lt;p&gt;&lt;img src="https://www.noleonardblog.com/p/bq-log-monitor/l2.jpg"
+width="1023"
+height="486"
+srcset="https://www.noleonardblog.com/p/bq-log-monitor/l2_hu_70118d0231c52a83.jpg 480w, https://www.noleonardblog.com/p/bq-log-monitor/l2_hu_9362d0c278e11af9.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="210"
+data-flex-basis="505px"
+&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LogEntry Objects
+可以透過撈取 Logging 資訊作為主動告警
+&lt;img src="https://www.noleonardblog.com/p/bq-log-monitor/l3.jpg"
+width="2590"
+height="1030"
+srcset="https://www.noleonardblog.com/p/bq-log-monitor/l3_hu_b49125a0695e158.jpg 480w, https://www.noleonardblog.com/p/bq-log-monitor/l3_hu_3897907afb77c8bb.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="251"
+data-flex-basis="603px"
+&gt;&lt;/li&gt;
+&lt;li&gt;GCP Service Account 使用 BigQuery 查詢量撈取範例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;span class="lnt"&gt;5
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;resource&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;bigquery_resource&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;log_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;projects/&amp;lt;project_id&amp;gt;/logs/cloudaudit.googleapis.com&lt;/span&gt;&lt;span class="si"&gt;%2F&lt;/span&gt;&lt;span class="s2"&gt;data_access&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;protoPayload&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;methodName&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;jobservice.jobcompleted&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;protoPayload&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serviceData&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jobCompletedEvent&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jobStatistics&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;totalProcessedBytes&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&lt;/span&gt; &lt;span class="mi"&gt;75000000000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;protoPayload&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;authenticationInfo&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;principalEmail&lt;/span&gt;&lt;span class="o"&gt;=~&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;(iam\.gserviceaccount\.com)$&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;ul&gt;
+&lt;li&gt;GCP Schedule Query 撈取 Error 範例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;span class="lnt"&gt;4
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-gdscript3" data-lang="gdscript3"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;resource&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;type&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;bigquery_resource&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;log_name&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;projects/&amp;lt;project_id&amp;gt;/logs/cloudaudit.googleapis.com&lt;/span&gt;&lt;span class="si"&gt;%2F&lt;/span&gt;&lt;span class="s2"&gt;data_access&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;protoPayload&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;serviceData&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jobCompletedEvent&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;job&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jobName&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;jobId&lt;/span&gt;&lt;span class="o"&gt;=~&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;scheduled_query&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="n"&gt;severity&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;ERROR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;以上撈取出來的可以去做客製化指標並使用 Cloud Alert 告警到 Slack 或是其他通訊軟體。&lt;/p&gt;
+&lt;h3 id="log-export-to-bigquery"&gt;Log export to bigquery
+&lt;/h3&gt;&lt;p&gt;可以匯出至 BigQuery 做被動監控報表，並且針對歷史資料做分析。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;有時候 Log Viewer 上較難以閱讀及使用, 可以透過 SQL 的方式查詢。&lt;/li&gt;
+&lt;li&gt;Audit log 預設保留 30 天，可以將 Log 匯出並針對歷史資料做查詢。&lt;/li&gt;
+&lt;li&gt;Audit log 匯出時記得設定過濾，避免量過大。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Step:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;BQ 建立資料集&lt;/li&gt;
+&lt;li&gt;Logging 建立接收器&lt;br&gt;
+&lt;img src="https://www.noleonardblog.com/p/bq-log-monitor/l4.jpg"
+width="546"
+height="173"
+srcset="https://www.noleonardblog.com/p/bq-log-monitor/l4_hu_efb49ef1da74171b.jpg 480w, https://www.noleonardblog.com/p/bq-log-monitor/l4_hu_2dd8f7cb5dd75cee.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="315"
+data-flex-basis="757px"
+&gt;
+&lt;img src="https://www.noleonardblog.com/p/bq-log-monitor/l5.jpg"
+width="616"
+height="706"
+srcset="https://www.noleonardblog.com/p/bq-log-monitor/l5_hu_d4ed88450fdf8f12.jpg 480w, https://www.noleonardblog.com/p/bq-log-monitor/l5_hu_a1d7d4208fe32781.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="87"
+data-flex-basis="209px"
+&gt;
+&lt;img src="https://www.noleonardblog.com/p/bq-log-monitor/l6.jpg"
+width="652"
+height="782"
+srcset="https://www.noleonardblog.com/p/bq-log-monitor/l6_hu_2dffe2d1c6cf36a8.jpg 480w, https://www.noleonardblog.com/p/bq-log-monitor/l6_hu_b4a88767f3966017.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="83"
+data-flex-basis="200px"
+&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;BigQuery Logging Table:&lt;/strong&gt;
+&lt;img src="https://www.noleonardblog.com/p/bq-log-monitor/l7.jpg"
+width="1893"
+height="378"
+srcset="https://www.noleonardblog.com/p/bq-log-monitor/l7_hu_d22f6ee10e7aee39.jpg 480w, https://www.noleonardblog.com/p/bq-log-monitor/l7_hu_b7cd35166f37e488.jpg 1024w"
+loading="lazy"
+alt="Cloud Logging"
+class="gallery-image"
+data-flex-grow="500"
+data-flex-basis="1201px"
+&gt;&lt;/p&gt;
+&lt;h2 id="reference"&gt;Reference:
+&lt;/h2&gt;&lt;p&gt;&lt;a class="link" href="https://cloudonair.withgoogle.com/events/taiwan-cloud-onboard-architecting-data-warehouse-2022" target="_blank" rel="noopener"
+&gt;Google Cloud OnBoard: 開始建構企業資料倉儲&lt;/a&gt;&lt;br&gt;
+&lt;a class="link" href="https://cloud.google.com/bigquery/docs/information-schema-intro" target="_blank" rel="noopener"
+&gt;INFORMATION SCHEMA Intro&lt;/a&gt;&lt;br&gt;
+&lt;a class="link" href="https://cloud.google.com/bigquery/docs/introduction-audit-workloads" target="_blank" rel="noopener"
+&gt;BigQuery Audit Log&lt;/a&gt;&lt;br&gt;
+&lt;a class="link" href="https://ithelp.ithome.com.tw/m/articles/10308217" target="_blank" rel="noopener"
+&gt;BigQuery 的三種監控方式 – 匯出 Cloud Logging&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;— — — — — — — — — — — — — — — — — — —&lt;/p&gt;
+&lt;p&gt;這是一個由 Gemini Advanced 產生的 Summary&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Logging (日誌記錄)
+詳細記錄操作歷史： BigQuery 日誌會詳細記錄各種操作，如查詢執行、資料載入、表格建立等。這有助於追蹤作業歷史、調查錯誤原因，並滿足合規審計需求。
+深入了解系統行為： 透過分析日誌，您可以深入了解 BigQuery 的運行狀況，識別潛在問題，並優化查詢性能。
+長期數據存儲： 日誌可以長期存儲，供未來分析和審計使用。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Monitoring (監控)
+實時系統狀態可視化： 監控提供 BigQuery 關鍵指標的實時可視化，如查詢執行時間、槽位使用率、查詢成本等。這有助於及時發現性能瓶頸和異常情況。
+趨勢分析與容量規劃： 透過分析歷史監控數據，您可以了解 BigQuery 使用趨勢，預測未來需求，並相應地規劃容量。
+主動問題識別： 監控可以幫助您在問題影響用戶之前主動識別並解決。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alerting (警報)
+及時通知異常情況： 當 BigQuery 指標超過預設閾值時，警報會及時通知相關人員，以便立即採取行動。
+成本控制： 警報可以幫助您監控查詢成本，避免意外的高額費用。
+綜上所述，BigQuery Logging、Monitoring 和 Alerting 對於以下方面至關重要：&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;優化性能： 識別性能瓶頸，優化查詢和工作負載。
+控制成本： 監控和管理查詢成本，避免意外費用。
+滿足合規需求： 記錄操作歷史，滿足審計和合規要求。
+透過有效利用這些工具，您可以全面管理 BigQuery 環境，確保其高效、可靠地運行，並充分發揮其強大的數據分析能力。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</description></item></channel></rss>

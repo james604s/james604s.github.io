@@ -1,0 +1,181 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="PySpark Lineage 與 Datahub 整合"><title>PySpark 學習筆記 - Data Lineage with Datahub</title><link rel=canonical href=https://www.noleonardblog.com/p/pyspark_lineage_with_datahub/><link rel=stylesheet href=/scss/style.min.663803bebe609202d5b39d848f2d7c2dc8b598a2d879efa079fa88893d29c49c.css><meta property='og:title' content="PySpark 學習筆記 - Data Lineage with Datahub"><meta property='og:description' content="PySpark Lineage 與 Datahub 整合"><meta property='og:url' content='https://www.noleonardblog.com/p/pyspark_lineage_with_datahub/'><meta property='og:site_name' content='KageNoLeonard'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='PySpark'><meta property='article:tag' content='Data Engineering'><meta property='article:tag' content='Data Governance'><meta property='article:tag' content='Datahub'><meta property='article:tag' content='Openlineage'><meta property='article:published_time' content='2025-09-27T00:00:00+00:00'><meta property='article:modified_time' content='2025-09-27T00:00:00+00:00'><meta name=twitter:title content="PySpark 學習筆記 - Data Lineage with Datahub"><meta name=twitter:description content="PySpark Lineage 與 Datahub 整合"><link rel="shortcut icon" href=/favicon.png><script async src="https://www.googletagmanager.com/gtag/js?id=G-CJF06ERQ8D"></script><script>var dnt,doNotTrack=!1;if(!1&&(dnt=navigator.doNotTrack||window.doNotTrack||navigator.msDoNotTrack,doNotTrack=dnt=="1"||dnt=="yes"),!doNotTrack){window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-CJF06ERQ8D")}</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label="Toggle Menu">
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/avatar_hu_baaa664a3fa26186.png width=300 height=300 class=site-logo loading=lazy alt=Avatar></a></figure><div class=site-meta><h1 class=site-name><a href=/>KageNoLeonard</a></h1><h2 class=site-description>Life | Scribbles | Data | Software</h2></div></header><ol class=menu-social><li><a href='https://mail.google.com/mail/?view=cm&amp;to=leonardtsengbc@gmail.com' target=_blank title=EmailToGmail rel=me><svg data-name="Layer 1" height="32" id="Layer_1" viewBox="0 0 32 32" width="32"><path d="M16.58 19.1068 3.89 11.0311A3 3 0 017.1109 5.97l9.31 5.9243L24.78 6.0428a3 3 0 013.44 4.9151z" fill="#ea4435"/><path d="M25.5 5.5h4a0 0 0 010 0v18a3 3 0 01-3 3h0a3 3 0 01-3-3V7.5a2 2 0 012-2z" fill="#00ac47" transform="translate(53.0001 32.0007) rotate(180)"/><path d="M29.4562 8.0656c-.0088-.06-.0081-.1213-.0206-.1812-.0192-.0918-.0549-.1766-.0823-.2652a2.9312 2.9312.0 00-.0958-.2993c-.02-.0475-.0508-.0892-.0735-.1354A2.9838 2.9838.0 0028.9686 6.8c-.04-.0581-.09-.1076-.1342-.1626a3.0282 3.0282.0 00-.2455-.2849c-.0665-.0647-.1423-.1188-.2146-.1771a3.02 3.02.0 00-.24-.1857c-.0793-.0518-.1661-.0917-.25-.1359-.0884-.0461-.175-.0963-.267-.1331-.0889-.0358-.1837-.0586-.2766-.0859s-.1853-.06-.2807-.0777a3.0543 3.0543.0 00-.357-.036c-.0759-.0053-.1511-.0186-.2273-.018a2.9778 2.9778.0 00-.4219.0425c-.0563.0084-.113.0077-.1689.0193a33.211 33.211.0 00-.5645.178c-.0515.022-.0966.0547-.1465.0795A2.901 2.901.0 0023.5 8.5v5.762l4.72-3.3043a2.8878 2.8878.0 001.2359-2.8923z" fill="#ffba00"/><path d="M5.5 5.5h0a3 3 0 013 3v18a0 0 0 010 0h-4a2 2 0 01-2-2V8.5a3 3 0 013-3z" fill="#4285f4"/><path d="M2.5439 8.0656c.0088-.06.0081-.1213.0206-.1812.0192-.0918.0549-.1766.0823-.2652A2.9312 2.9312.0 012.7426 7.32c.02-.0475.0508-.0892.0736-.1354A2.9719 2.9719.0 013.0316 6.8c.04-.0581.09-.1076.1342-.1626a3.0272 3.0272.0 01.2454-.2849c.0665-.0647.1423-.1188.2147-.1771a3.0005 3.0005.0 01.24-.1857c.0793-.0518.1661-.0917.25-.1359A2.9747 2.9747.0 014.3829 5.72c.089-.0358.1838-.0586.2766-.0859s.1853-.06.2807-.0777a3.0565 3.0565.0 01.357-.036c.076-.0053.1511-.0186.2273-.018a2.9763 2.9763.0 01.4219.0425c.0563.0084.113.0077.169.0193a2.9056 2.9056.0 01.286.0888 2.9157 2.9157.0 01.2785.0892c.0514.022.0965.0547.1465.0795a2.9745 2.9745.0 01.3742.21A2.9943 2.9943.0 018.5 8.5v5.762L3.78 10.9579A2.8891 2.8891.0 012.5439 8.0656z" fill="#c52528"/></svg></a></li><li><a href=https://github.com/james604s target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li><li><a href=https://www.linkedin.com/in/shao-hung-tseng-106455134/ target=_blank title=Linkedin rel=me><svg fill="#000" height="800" width="800" id="Layer_1" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 455 455"><g><path style="fill-rule:evenodd;clip-rule:evenodd" d="M246.4 204.35v-.665c-.136.223-.324.446-.442.665H246.4z"/><path style="fill-rule:evenodd;clip-rule:evenodd" d="M0 0v455h455V0H0zM141.522 378.002H74.016V174.906h67.506V378.002zM107.769 147.186h-.446C84.678 147.186 70 131.585 70 112.085c0-19.928 15.107-35.087 38.211-35.087 23.109.0 37.31 15.159 37.752 35.087.0 19.5-14.643 35.101-38.194 35.101zM385 378.002h-67.524V269.345c0-27.291-9.756-45.92-34.195-45.92-18.664.0-29.755 12.543-34.641 24.693-1.776 4.34-2.24 10.373-2.24 16.459v113.426h-67.537s.905-184.043.0-203.096H246.4v28.779c8.973-13.807 24.986-33.547 60.856-33.547 44.437.0 77.744 29.02 77.744 91.398V378.002z"/></g></svg></a></li><li><a href=https://medium.com/sq-catch-and-note target=_blank title=Medium rel=me><svg fill="#000" width="800" height="800" viewBox="-2 -2 24 24" preserveAspectRatio="xMinYMin" class="jam jam-medium-circle"><path d="M10 18a8 8 0 100-16 8 8 0 000 16zm0 2C4.477 20 0 15.523.0 10S4.477.0 10 0s10 4.477 10 10-4.477 10-10 10z"/><path d="M6.186 7.632a.392.392.0 00-.126-.33L5.126 6.17V6h2.9l2.24 4.952L12.236 6H15v.17l-.798.77a.236.236.0 00-.089.226v5.668a.236.236.0 00.089.225l.78.772V14H11.06v-.17l.807-.79c.08-.08.08-.103.08-.225V8.234L9.7 13.981h-.303L6.783 8.234v3.852a.534.534.0 00.145.442l1.05 1.284v.17H5v-.17l1.05-1.284a.515.515.0 00.136-.442V7.632z"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>Home</span></a></li><li><a href=/archives/><svg class="icon icon-tabler icon-tabler-archive" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><rect x="3" y="4" width="18" height="4" rx="2"/><path d="M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8"/><line x1="10" y1="12" x2="14" y2="12"/></svg>
+<span>Archives</span></a></li><li><a href=/search/><svg class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="10" cy="10" r="7"/><line x1="21" y1="21" x2="15" y2="15"/></svg>
+<span>Search</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-link" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M10 14a3.5 3.5.0 005 0l4-4a3.5 3.5.0 00-5-5l-.5.5"/><path d="M14 10a3.5 3.5.0 00-5 0l-4 4a3.5 3.5.0 005 5l.5-.5"/></svg>
+<span>About</span></a></li><li class=menu-bottom-section><ol class=menu><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>Dark Mode</span></li></ol></li></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">Table of contents</h2><div class=widget--toc><nav id=TableOfContents><ol><li><a href=#spark--lineage><strong>Spark & Lineage</strong></a><ol><li><a href=#sparklistener安插在-spark-內的事件監聽器><strong>SparkListener：安插在 Spark 內的事件監聽器</strong></a></li><li><a href=#logical-planspark-任務的原始設計藍圖><strong>Logical Plan：Spark 任務的原始設計藍圖</strong></a></li></ol></li><li><a href=#etl-example-部分由-gemini-生成><strong>ETL Example (部分由 Gemini 生成)</strong></a><ol><li><a href=#process_mssql_datapy>process_mssql_data.py</a></li><li><a href=#路徑-a直達車---datahub-原生整合-acryl-spark-lineage><strong>路徑 A：直達車 - Datahub 原生整合 (acryl-spark-lineage)</strong></a></li><li><a href=#路徑-b自由行---openlineage-開放標準>路徑 B：自由行 - OpenLineage 開放標準</a></li></ol></li><li><a href=#summary>Summary</a></li><li><a href=#reference>Reference</a></li></ol></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/pyspark/ style=background-color:#d94600;color:#fff>PySpark
+</a><a href=/categories/data-engineering/>Data Engineering
+</a><a href=/categories/data-governance/>Data Governance</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/p/pyspark_lineage_with_datahub/>PySpark 學習筆記 - Data Lineage with Datahub</a></h2><h3 class=article-subtitle>PySpark Lineage 與 Datahub 整合</h3></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Sep 27, 2025</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>3 minute read</time></div></footer></div></header><section class=article-content><h1 id=pyspark-data-lineage-with-datahub>PySpark Data Lineage with Datahub</h1><p>在我們日常的資料工作中，一個最令人頭痛的問題莫過於：「這張報表的資料到底從哪裡來？中間經過了哪些處理？」當資料流程變得越來越複雜時，如果沒有清晰的<strong>資料血緣 (Data Lineage)</strong>，追蹤問題、評估變更影響，甚至確保資料的可信度，都會變成一場噩夢。</p><p>幸運的是，像 PySpark 這樣的強大處理引擎，搭配 Datahub 這樣的現代資料目錄 (Data Catalog)，可以幫助我們自動化地解開這個謎團。</p><p><em>在 Datahub 中呈現的清晰資料血緣圖</em></p><h2 id=spark--lineage><strong>Spark & Lineage</strong></h2><p>在我們動手寫任何程式碼之前，最重要的一步是理解這背後的「魔法」是如何運作的。PySpark 本身並不會主動告訴外界它的資料流向，那麼 Datahub 是如何得知的呢？</p><p>答案就在於 Spark 提供的一個強大機制：<strong>SparkListener</strong> 介面。</p><h3 id=sparklistener安插在-spark-內的事件監聽器><strong>SparkListener：安插在 Spark 內的事件監聽器</strong></h3><p>SparkListener 是 Spark 框架中基於觀察者模式 (Observer Pattern) 的一個實作。你可以把它想像成一個我們安插在 Spark 應用程式內部的「事件監聽器」。當你的 PySpark 腳本執行時，它內部的每一個重要動作——作業開始 (onJobStart)、作業結束 (onJobEnd)，乃至於一個查詢的執行 (onQueryExecution)——都會在 Spark 內部觸發一個對應的「事件」。</p><p>我們的血緣擷取工具，正是透過實作這個介面來監聽這些事件。其中，對於資料血緣來說，最重要的事件是 <strong>onQueryExecution</strong>。</p><h3 id=logical-planspark-任務的原始設計藍圖><strong>Logical Plan：Spark 任務的原始設計藍圖</strong></h3><p>當 onQueryExecution 事件被觸發時，監聽器會收到一個 QueryExecution 物件，這個物件中包含了我們擷取血緣的關鍵資訊：<strong>邏輯計劃 (Logical Plan)</strong>。</p><p>Logical Plan 是一個抽象語法樹 (Abstract Syntax Tree, AST)，它代表了你的 DataFrame 操作或 SQL 查詢在經過任何優化<strong>之前</strong>的完整結構。為什麼強調「未經優化」？因為它最忠實地反映了你編寫的程式碼邏輯。這個計畫詳細記錄了：</p><ul><li><strong>資料來源 (Sources)</strong>：透過 UnresolvedRelation 等節點，標示資料是從哪個資料庫的哪張表讀取的。</li><li><strong>轉換操作 (Transformations)</strong>：透過 Project (對應 select 或 withColumn)、Filter、Join 等節點，描述資料經過的每一個處理步驟。</li><li><strong>資料去向 (Sink)</strong>：描述最終結果被寫入到哪個目的地。</li></ul><p>血緣工具的核心任務，就是遞迴地遍歷這棵 Logical Plan 樹，解析出其中包含的輸入、輸出以及欄位級別的操作，從而完整地還原出資料的完整旅程。</p><p><strong>核心概念</strong>：無論是 Datahub 的原生整合工具，還是 OpenLineage 的開放標準工具，它們的核心都是實現了一個 SparkListener。<strong>它們的根本差異，不在於如何擷取 Logical Plan，而在於如何將解析後的血緣資訊「格式化」並「匯報」給 Datahub。</strong></p><h2 id=etl-example-部分由-gemini-生成><strong>ETL Example (部分由 Gemini 生成)</strong></h2><p>理論講完了，讓我們來建立一個統一的實戰場景。以下是一個通用的 PySpark 腳本，它將是我們後續兩種方法的測試對象。</p><p><strong>任務目標</strong>：從 MSSQL 的 dbo.source_table 讀取資料，進行一系列轉換，然後將結果寫入 dbo.target_table。</p><h3 id=process_mssql_datapy>process_mssql_data.py</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>from pyspark.sql import SparkSession
+</span></span><span class=line><span class=cl>from pyspark.sql.functions import col, lit, current_timestamp, upper, year, month
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>def main():
+</span></span><span class=line><span class=cl> &#34;&#34;&#34;
+</span></span><span class=line><span class=cl> 一個從 MSSQL 讀取、轉換並寫入的 Spark ETL 作業。
+</span></span><span class=line><span class=cl> &#34;&#34;&#34;
+</span></span><span class=line><span class=cl> spark = SparkSession.builder.appName(&#34;MSSQL_ETL_Lineage_Demo&#34;).getOrCreate()
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    # db conn
+</span></span><span class=line><span class=cl>    jdbc_url = &#34;jdbc:sqlserver://your_mssql_server:1433;databaseName=your_db&#34;
+</span></span><span class=line><span class=cl>    connection_properties = {
+</span></span><span class=line><span class=cl>        &#34;user&#34;: &#34;your_user&#34;,
+</span></span><span class=line><span class=cl>        &#34;password&#34;: &#34;your_password&#34;,
+</span></span><span class=line><span class=cl>        &#34;driver&#34;: &#34;com.microsoft.sqlserver.jdbc.SQLServerDriver&#34;
+</span></span><span class=line><span class=cl>    }
+</span></span><span class=line><span class=cl>    source_table = &#34;dbo.source_table&#34;
+</span></span><span class=line><span class=cl>    target_table = &#34;dbo.target_table&#34;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    # Read Table
+</span></span><span class=line><span class=cl>    print(&#34;--- 正在從來源資料表讀取資料 ---&#34;)
+</span></span><span class=line><span class=cl>    source_df = spark.read.jdbc(
+</span></span><span class=line><span class=cl>        url=jdbc_url,
+</span></span><span class=line><span class=cl>        table=source_table,
+</span></span><span class=line><span class=cl>        properties=connection_properties
+</span></span><span class=line><span class=cl>    )
+</span></span><span class=line><span class=cl>    print(&#34;來源 DataFrame Schema:&#34;)
+</span></span><span class=line><span class=cl>    source_df.printSchema()
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    # Tranform
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    print(&#34;--- 正在進行資料轉換 ---&#34;)
+</span></span><span class=line><span class=cl>    transformed_df = source_df \
+</span></span><span class=line><span class=cl>        .withColumn(&#34;processed_at&#34;, current_timestamp()) \
+</span></span><span class=line><span class=cl>        .withColumn(&#34;job_name&#34;, lit(&#34;MSSQL_ETL_Lineage_Demo&#34;)) \
+</span></span><span class=line><span class=cl>        .withColumn(&#34;source_system_upper&#34;, upper(col(&#34;source_system&#34;))) \
+</span></span><span class=line><span class=cl>        .withColumn(&#34;event_year&#34;, year(col(&#34;event_date&#34;))) \
+</span></span><span class=line><span class=cl>        .withColumn(&#34;event_month&#34;, month(col(&#34;event_date&#34;))) \
+</span></span><span class=line><span class=cl>        .filter(col(&#34;value&#34;) &gt; 100)
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    print(&#34;轉換後 DataFrame Schema:&#34;)
+</span></span><span class=line><span class=cl>    transformed_df.printSchema()
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    # Write
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    print(f&#34;--- 正在將資料寫入 {target_table} ---&#34;)
+</span></span><span class=line><span class=cl>    transformed_df.write.jdbc(
+</span></span><span class=line><span class=cl>        url=jdbc_url,
+</span></span><span class=line><span class=cl>        table=target_table,
+</span></span><span class=line><span class=cl>        mode=&#34;overwrite&#34;,
+</span></span><span class=line><span class=cl>        properties=connection_properties
+</span></span><span class=line><span class=cl>    )
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    print(&#34;--- 作業成功完成！ ---&#34;)
+</span></span><span class=line><span class=cl>    spark.stop()
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>if __name__ == &#34;__main__&#34;:
+</span></span><span class=line><span class=cl>    main()
+</span></span></code></pre></td></tr></table></div></div><p>現在，我們將用兩種不同的 spark-submit 指令來執行同一個腳本，看看它們是如何實現血緣追蹤的。</p><h3 id=路徑-a直達車---datahub-原生整合-acryl-spark-lineage><strong>路徑 A：直達車 - Datahub 原生整合 (acryl-spark-lineage)</strong></h3><p>這條路徑像是搭乘一班為 Datahub 量身打造的直達專車，簡單、快速，改造 OpenLineage 標準以符合 Datahub 的格式。</p><ul><li><strong>報告格式</strong>：將 Logical Plan 直接翻譯成 Datahub 內部能理解的格式，稱為 <strong>Metadata Change Proposals (MCPs)</strong>。</li><li><strong>報告機制</strong>：透過 HTTP API 直接將這些 MCPs 發送給 Datahub 的核心服務 (GMS)。</li></ul><blockquote><p>確保你已經下載了 MSSQL JDBC 驅動</p></blockquote><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-gdscript3 data-lang=gdscript3><span class=line><span class=cl><span class=k>export</span> <span class=n>MSSQL_JDBC_JAR</span><span class=o>=</span><span class=s2>&#34;/path/to/mssql-jdbc.jar&#34;</span>  
+</span></span></code></pre></td></tr></table></div></div><p><strong>spark-submit 指令：</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>spark-submit \
+</span></span><span class=line><span class=cl>    --master local[*] \
+</span></span><span class=line><span class=cl>    --packages io.acryl:acryl-spark-lineage_2.12:0.2.18 \
+</span></span><span class=line><span class=cl>    --jars ${MSSQL_JDBC_JAR} \
+</span></span><span class=line><span class=cl>    --conf &#34;spark.extraListeners=io.acryl.spark.AcrylSparkListener&#34; \
+</span></span><span class=line><span class=cl>    --conf &#34;spark.datahub.url=http://your-datahub-gms-host:8080&#34; \
+</span></span><span class=line><span class=cl>    --conf &#34;spark.datahub.token=YOUR_DATAHUB_API_TOKEN&#34; \
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>process_mssql_data.py
+</span></span></code></pre></td></tr></table></div></div><ul><li><strong>spark.extraListeners</strong>: 這是啟動魔法的關鍵，告訴 Spark 要掛載 Acryl 的監聽器。</li><li><strong>spark.datahub.url</strong>: Datahub GMS 服務的端點 (Endpoint)。</li></ul><h3 id=路徑-b自由行---openlineage-開放標準>路徑 B：自由行 - OpenLineage 開放標準</h3><p>這條路徑採用了 OpenLineage 這個開放標準，提供了更大的靈活性和未來擴充性。</p><ul><li><strong>報告格式</strong>：將 Logical Plan 翻譯成一種通用的、標準化的 <strong>OpenLineage Event (JSON 格式)</strong>。這份「報告」任何支援 OpenLineage 的平台都看得懂。</li><li><strong>報告機制</strong>：將標準化的 JSON 事件發送到一個指定的 HTTP 端點。Datahub 恰好提供了一個這樣的端點來接收這些事件。</li></ul><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-gdscript3 data-lang=gdscript3><span class=line><span class=cl><span class=k>export</span> <span class=n>MSSQL</span>\<span class=n>_JDBC</span>\<span class=n>_JAR</span><span class=o>=</span><span class=s2>&#34;/path/to/mssql-jdbc.jar&#34;</span>
+</span></span></code></pre></td></tr></table></div></div><p><strong>spark-submit 指令：</strong></p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span><span class=lnt>2
+</span><span class=lnt>3
+</span><span class=lnt>4
+</span><span class=lnt>5
+</span><span class=lnt>6
+</span><span class=lnt>7
+</span><span class=lnt>8
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>spark-submit \
+</span></span><span class=line><span class=cl> --master local[*] \
+</span></span><span class=line><span class=cl> --packages io.openlineage:openlineage-spark:1.13.0 \
+</span></span><span class=line><span class=cl> --jars ${MSSQL_JDBC_JAR} \
+</span></span><span class=line><span class=cl> --conf &#34;spark.extraListeners=io.openlineage.spark.agent.OpenLineageSparkListener&#34; \
+</span></span><span class=line><span class=cl> --conf &#34;spark.openlineage.transport.type=http&#34; \
+</span></span><span class=line><span class=cl> --conf &#34;spark.openlineage.transport.url=http://your-datahub-gms-host:8080/api/v1/lineage&#34; \
+</span></span><span class=line><span class=cl> --conf &#34;spark.openlineage.namespace=my_production_etl&#34; \
+</span></span></code></pre></td></tr></table></div></div><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>process_mssql_data.py
+</span></span></code></pre></td></tr></table></div></div><ul><li><strong>spark.openlineage.transport.url</strong>: 設定接收端點，注意！這裡指向的是 <strong>Datahub 專門用來接收 OpenLineage 事件的 API 端點</strong>。</li></ul><p>如以上都執行成功，預計可以抓到資料血緣 (Table to Table)、(Column to Column)，
+建議可以 Dev 期間可以先透過 Jupyter Notebook 一行執行，
+Prod 再進行 Spark Submit。</p><p><img src=/p/pyspark_lineage_with_datahub/example.jpg width=1293 height=908 srcset="/p/pyspark_lineage_with_datahub/example_hu_b6661399be5b716c.jpg 480w, /p/pyspark_lineage_with_datahub/example_hu_2dfd3e35bf8146cb.jpg 1024w" loading=lazy alt="PySpark Lineage" class=gallery-image data-flex-grow=142 data-flex-basis=341px></p><h2 id=summary>Summary</h2><p>文章中探討了如何透過 PySpark 自動化地將資料血緣傳送到 Datahub。</p><ul><li><strong>核心問題</strong>：複雜的資料流程導致可觀測性 (Observability) 低落，難以追蹤和管理。</li><li><strong>解決方案</strong>：利用 Spark 內建的 SparkListener 機制，在執行期間擷取 Logical Plan，從而自動生成血緣關係。</li><li><strong>兩種實現路徑</strong>：<ol><li><strong>Datahub 原生整合 (acryl-spark-lineage)</strong>：最簡單、最直接的方法，專為 Datahub 設計，適合追求快速實施且技術棧單一的團隊。目前功能上整合越來越多 OpenLineage 的 Feature 做使用。</li><li><strong>OpenLineage 開放標準</strong>：更具靈活性和擴充性的方法，它將血緣資訊標準化，使你的架構不受特定廠商綁定，是建立企業級、可持續演進資料平台的首選。</li></ol></li></ul><p><strong>如何選擇？</strong></p><div class=table-wrapper><table><thead><tr><th>特性</th><th>Datahub 原生整合 (路徑 A)</th><th>OpenLineage 標準 (路徑 B)</th></tr></thead><tbody><tr><td><strong>設定難度</strong></td><td>⭐ (極簡)</td><td>⭐⭐ (稍有門檻)</td></tr><tr><td><strong>廠商中立性</strong></td><td>❌ (綁定 Datahub)</td><td>✅ (可發送到任何相容後端)</td></tr><tr><td><strong>除錯能力</strong></td><td>⭐⭐ (中等)</td><td>⭐⭐⭐⭐⭐ (極佳，可直接查看事件內容)</td></tr><tr><td><strong>長期架構</strong></td><td>適合單一平台、快速實施</td><td>適合企業級、可持續演進的平台</td></tr></tbody></table></div><h2 id=reference>Reference</h2><ul><li><strong>Datahub Native Integration</strong><ul><li><a class=link href=https://docs.datahub.com/docs/metadata-integration/java/acryl-spark-lineage target=_blank rel=noopener>Official Datahub Spark Lineage</a></li><li><a class=link href=https://github.com/acryldata/acryl-spark-lineage target=_blank rel=noopener>GitHub: acryl-spark-lineage</a></li></ul></li><li><strong>OpenLineage Standard</strong><ul><li><a class=link href=https://openlineage.io/ target=_blank rel=noopener>Official OpenLineage</a></li><li><a class=link href=https://openlineage.io/docs/integrations/spark/ target=_blank rel=noopener>OpenLineage Spark Integration</a></li><li><a class=link href=https://github.com/OpenLineage/OpenLineage/tree/main/integration/spark target=_blank rel=noopener>GitHub: openlineage-spark</a></li></ul></li></ul></section><footer class=article-footer><section class=article-tags><a href=/tags/pyspark/>PySpark</a>
+<a href=/tags/data-engineering/>Data Engineering</a>
+<a href=/tags/data-governance/>Data Governance</a>
+<a href=/tags/datahub/>Datahub</a>
+<a href=/tags/openlineage/>Openlineage</a></section><section class=article-copyright><svg class="icon icon-tabler icon-tabler-copyright" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><path d="M14.5 9a3.5 4 0 100 6"/></svg>
+<span>Leonard</span></section><section class=article-lastmod><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>Last updated on Sep 27, 2025 00:00 UTC</span></section></footer></article><aside class=related-content--wrapper><h2 class=section-title>Related content</h2><div class=related-content><div class="flex article-list--tile"><article><a href=/p/pyspark_df_writer_api_n_partition/><div class=article-details><h2 class=article-title>PySpark 學習筆記 - DataFrame Writer 與 Partition Example</h2></div></a></article><article><a href=/p/pyspark_spark_log4j/><div class=article-details><h2 class=article-title>PySpark 學習筆記 - Apache Spark 與 Log4j</h2></div></a></article><article><a href=/p/pyspark_basic_exec_model/><div class=article-details><h2 class=article-title>PySpark 學習筆記 - Basic Exec Model & Resource</h2></div></a></article><article><a href=/p/pyspark_getting_start/><div class=article-details><h2 class=article-title>PySpark 學習筆記 - Getting Start</h2></div></a></article><article class=has-image><a href=/p/bq-log-monitor/><div class=article-image><img src=/p/bq-log-monitor/c2.13a8789707a7fcb96ce26ec541c7a913_hu_a2e3396874d49b2.jpg width=250 height=150 loading=lazy alt="Featured image of post BigQuery Logging & Monitoring" data-key=bq-log-monitor data-hash="md5-E6h4lwen/Lls4m7FQcepEw=="></div><div class=article-details><h2 class=article-title>BigQuery Logging & Monitoring</h2></div></a></article></div></div></aside><div class=disqus-container><div id=disqus_thread></div><script>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//KageNoLeonard.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a></div><style>.disqus-container{background-color:var(--card-background);border-radius:var(--card-border-radius);box-shadow:var(--shadow-l1);padding:var(--card-padding)}</style><script>window.addEventListener("onColorSchemeChange",e=>{typeof DISQUS=="object"&&DISQUS.reset({reload:!0})})</script><footer class=site-footer><section class=copyright>&copy;
+2024 -
+2025 KageNoLeonard</section><section class=powerby>leonardtsengbc@gmail.com | When the ETL jobs fail, let it go!!! Don't be obsessed<br>Built with <a href=https://gohugo.io/ target=_blank rel=noopener>Hugo</a><br>Theme <b><a href=https://github.com/CaiJimmy/hugo-theme-stack target=_blank rel=noopener data-version=3.30.0>Stack</a></b> designed by <a href=https://jimmycai.com target=_blank rel=noopener>Jimmy</a></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.1e9a3bafd846ced4c345d084b355fb8c7bae75701c338f8a1f8a82c780137826.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
